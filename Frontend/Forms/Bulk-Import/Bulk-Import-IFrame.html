@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        #mainPage {
+            width: 330px;
+            text-align: center;
+        }
+        #empty-space {
+            margin-left: 20px;
+        }
+        #file-show {
+            font-size: 20px;
+            color: #700000;
+            margin-top: 5px;
+        }
+
+        #submitButton {
+            font-family: Noto Sans, sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: white;
+            cursor: pointer;
+
+            width: 150px;
+            height: 40px;
+            background-color: #222222;
+            border: 0px;
+        }
+        #bulkUploadButton::-webkit-file-upload-button {
+            font-family: Noto Sans, sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: white;
+            cursor: pointer;
+
+            height: 40px;
+            width: 150px;
+            background-color: #222222;
+            border: 0px;
+        }
+        #bulkUploadButton {
+            width: 150px;
+            height: 40px;
+            border: 0px;
+        }
+    </style>
+    <script type="text/javascript">
+        /* IFrame JS */
+        function ReadCSVData(rawFile) {
+            // Set up file reader
+            let submitButton = document.getElementById("submitButton");
+            submitButton.addEventListener("click", function(e) {
+                var reader = new FileReader();
+                reader.addEventListener("load", function(e) {
+                    // Reader has loaded, get data
+                    let CSVData = e.target.result;
+                    let itemData = [];
+                    let CSVArray = CSVData.split("\r\n"); // Split different entries
+                    for (let i = 0; i < CSVArray.length-1; i++) {
+                        let entry = CSVArray[i];
+                        if (entry.trim().localeCompare('') != 0) {
+                            itemData.push(entry.split(",")); // Data in entry seperated by commas
+                        }
+                    }
+
+                    //console.table(itemData); // Print final table of data
+                    window.parent.postMessage(itemData, "*"); // Send data back to wix
+                })
+
+                // Read CSV file
+                reader.readAsBinaryString(rawFile);
+            })
+        }
+
+        function GetFile() {
+            let uploadButton = document.getElementById('bulkUploadButton');
+            uploadButton.addEventListener('change', function(e) {
+                // Check that a file is currently uploaded
+                if (uploadButton.files && uploadButton.files[0]) {
+                    // Get file and check if its a csv
+                    let inputFile = uploadButton.files[0];
+                    let fileName = inputFile.name;
+                    let dotIndex = fileName.lastIndexOf('.');
+                    if (fileName.substring(dotIndex).localeCompare('.csv') != 0) {
+                        // Not a CSV
+                        uploadButton.files = [];
+                        return;
+                    }
+
+                    // File is a CSV, read data
+                    document.getElementById("submitButton").disabled = false;
+                    document.getElementById("file-show").innerHTML = "File: " + fileName;
+                    ReadCSVData(inputFile);
+                }
+            })
+        }
+
+        window.onload = function() {
+            document.getElementById("submitButton").disabled = true;
+            GetFile();
+        }
+    </script>
+</head>
+<html lang="en">
+    <body>
+        <div id="mainPage">
+            <input type="file" accept=".csv" id="bulkUploadButton" name="bulkUploadButton" />
+            <span id="empty-space"></span>
+            <input type="button" id ="submitButton" name="submitButton" value="Import File" />
+            <br />
+            <p id="file-show"></p>
+        </div>
+    </body>
+</html>

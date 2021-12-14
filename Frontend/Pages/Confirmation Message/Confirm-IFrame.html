@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Title</title>
+    <head>
+        <style>
+            head {font-family: sans-serif;
+                color: black;
+                font-size: 50px;
+            }
+            h1{
+                font-family: sans-serif;
+                color: black;
+                font-size: 20px;
+
+            }
+            body{
+                font-family: sans-serif;
+                color: black;
+                font-size: 20px;
+            }
+        </style>
+        <script type="text/javascript">
+            let orderInfo;
+            window.onmessage = (event) => {
+                if (event.data) {
+                    orderInfo = event.data;
+                	  let input = orderInfo;
+                    let slashPos = input.indexOf("/");
+                    let dashPos = input.indexOf("-");
+                    let semiPos = input.indexOf(";");    
+                    let name = input.substring(0, dashPos);
+                    let orderNum = input.substring(dashPos+1, semiPos);
+                    let total = input.substring(semiPos+1, slashPos);
+                    let address = input.substring(slashPos+1);
+                    document.getElementById("custName").innerHTML += name;
+                    document.getElementById("orderNo").innerHTML += orderNum;
+                    document.getElementById("total").innerHTML += total;
+                    document.getElementById("address").innerHTML += address;
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <h1 id="custName" align="center">Thank you for your order, </h1>
+        <h1 align="center">You'll receive an email confirmation soon.</h1>
+        <h3 id="orderNo">Order no: </h3><br>
+        <h4 id="total">Total: $</h4><br>
+        <h1 id="address">Shipping to: </h1>
+    </body>
+</html>

@@ -1,50 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
-    <title>Title</title>
-    <head>
-        <style>
-            head {font-family: sans-serif;
-                color: black;
-                font-size: 50px;
-            }
-            h1{
-                font-family: sans-serif;
-                color: black;
-                font-size: 20px;
 
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <style>
+            #submitCredFormButton {
+                font-family: Noto Sans, sans-serif;
+                font-size: 15px;
+                font-weight: 500;
+                color: white;
+                cursor: pointer;
+
+                width: 180px;
+                height: 40px;
+                background-color: #222222;
+                border: 0;
             }
-            body{
-                font-family: sans-serif;
+            #fName {
+                font-family: Noto Sans, sans-serif;
+                font-size: 15px;
+                font-weight: 500;
                 color: black;
-                font-size: 20px;
+
+                width: 175px;
+                height: 20px;
+                background-color: white;
+                border: 1px solid black;
+            }
+            #lName {
+                font-family: Noto Sans, sans-serif;
+                font-size: 15px;
+                font-weight: 500;
+                color: black;
+
+                width: 175px;
+                height: 20px;
+                background-color: white;
+                border: 1px solid black;
+            }
+            #shipField {
+                font-family: Noto Sans, sans-serif;
+                font-size: 15px;
+                font-weight: 500;
+                color: black;
+
+                width: 175px;
+                height: 20px;
+                background-color: white;
+                border: 1px solid black;
+            }
+            #emailField {
+                font-family: Noto Sans, sans-serif;
+                font-size: 15px;
+                font-weight: 500;
+                color: black;
+
+                width: 175px;
+                height: 20px;
+                background-color: white;
+                border: 1px solid black;
             }
         </style>
         <script type="text/javascript">
-            let orderInfo;
+            let cartInfo;
             window.onmessage = (event) => {
                 if (event.data) {
-                    orderInfo = event.data;
-                	  let input = orderInfo;
-                    let slashPos = input.indexOf("/");
-                    let dashPos = input.indexOf("-");
-                    let semiPos = input.indexOf(";");    
-                    let name = input.substring(0, dashPos);
-                    let orderNum = input.substring(dashPos+1, semiPos);
-                    let total = input.substring(semiPos+1, slashPos);
-                    let address = input.substring(slashPos+1);
-                    document.getElementById("custName").innerHTML += name;
-                    document.getElementById("orderNo").innerHTML += orderNum;
-                    document.getElementById("total").innerHTML += total;
-                    document.getElementById("address").innerHTML += address;
+                    cartInfo = event.data;
+                    document.getElementById("credFrame").innerHTML = event.data;
                 }
             };
+
+            function formatAMPM(date) {
+                var hours = date.getHours();
+                var minutes = date.getMinutes();
+                var ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours ? hours : 12; // the hour '0' should be '12'
+                minutes = minutes < 10 ? '0'+minutes : minutes;
+                return hours + ':' + minutes + ampm;
+            }
+
+            function validateEmail(email){
+                return String(email)
+                    .toLowerCase()
+                    .match(
+                        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                    );
+            }
+
+            function validateCredForm(){
+                let finalTransaction = [];
+                //Check if input fields are empty
+                let check = true;
+                let fName = document.forms["credForm"]["fName"].value;
+                if(fName === ""){
+                    check = false;
+                }
+                let lName = document.forms["credForm"]["lName"].value;
+                if(lName === ""){
+                    check = false;
+                }
+                let shipField = document.forms["credForm"]["shipField"].value;
+                if(shipField === ""){
+                    check = false;
+                }
+                let email = document.forms["credForm"]["emailField"].value;
+                if(email === ""){
+                    check = false;
+                }
+                else if(!validateEmail(email)){
+                    check = false;
+                    console.log("invalid Email");
+                }
+
+                var date = new Date();
+                var year = date.getFullYear();
+                var month = date.getMonth()+1;
+                var day = date.getDate();
+                if(day < 10){
+                    day = "0"+day;
+                }
+                var time = formatAMPM(date);
+                var currDate = month + "/" +  day + "/" + year + " "+ time;
+                console.log(currDate);
+
+                finalTransaction = {
+                    "valid": check,
+                    "cart": cartInfo,
+                    "fName": fName,
+                    "lName": lName,
+                    "shipAddress":shipField,
+                    "email": email,
+                    "date": currDate
+                };
+
+                window.parent.postMessage(finalTransaction, "*");
+            }
         </script>
     </head>
+
     <body>
-        <h1 id="custName" align="center">Thank you for your order, </h1>
-        <h1 align="center">You'll receive an email confirmation soon.</h1>
-        <h3 id="orderNo">Order no: </h3><br>
-        <h4 id="total">Total: $</h4><br>
-        <h1 id="address">Shipping to: </h1>
+    <h2 style="font-family: Noto Sans, sans-serif">Enter your credentials</h2>
+    <p style="font-family: Noto Sans, sans-serif">​Enter the following information to complete your order.</p>
+    <form name="credForm" method="post">
+        <label for="fName" style="font-family: Noto Sans, sans-serif">First Name:</label><br>
+        <input type="text" id="fName" name="fName"><br><br>
+
+        <label for="lName" style="font-family: Noto Sans, sans-serif">Last Name:</label><br>
+        <input type="text" id="lName" name="lName"><br><br>
+
+        <label for="shipField" style="font-family: Noto Sans, sans-serif">Shipping Address:</label><br>
+        <input type="text" id="shipField" name="shipField"><br><br>
+
+        <label for="emailField" style="font-family: Noto Sans, sans-serif">Email:</label><br>
+        <input type="text" id="emailField" name="emailField"><br><br><br>
+
+        <input type="button" id="submitCredFormButton" onclick="return validateCredForm()" value="Submit">
+    </form>
     </body>
 </html>
+
+

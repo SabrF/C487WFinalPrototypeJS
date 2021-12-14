@@ -10,5 +10,8 @@ Wholesaler Browsing:
 
 Staff Browsing:
 - At Wholesaler Login:
-  - Username = staffLogin@gmail.com
+  - Username = specialWhole@gmail.com
   - Password = STAFFLOGIN
+- At Staff Login
+  - Username = dPotato@gmail.com
+  - Password = notAPassword123

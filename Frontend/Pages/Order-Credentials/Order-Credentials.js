@@ -11,6 +11,7 @@ $w.onReady(function () {
 	if (session.getItem("cart") == null || session.getItem("cart").localeCompare("") == 0) {
 		wixLocation.to("/");
 	} 
+	
 	$w("#submitFailText").hide();
 	WaitForMessage();
 });
@@ -40,10 +41,10 @@ export function finalizeTransaction(data){
  export async function submitButton_click(data){
 	 let cartInfo = session.getItem("cart");
 	 let total = session.getItem("total");
-	 wixLocation.to("/confirmation-message");
+	 let numTotal = parseFloat(parseFloat(total).toFixed(2))
 	 var orderNum = generateOrderNumber();
 	 let dataToInsert = data;
-	 if("cart" != null){
+	 if(cartInfo != null){
 		 dataToInsert = {
 		 "orderNumber" : orderNum,
 		 "title": data.fName,
@@ -51,15 +52,14 @@ export function finalizeTransaction(data){
 		 "recipient1": data.email,
 		 "shippingAddress": data.shipAddress,
 		 "purchasedItems": cartInfo,
-		 "total": parseInt(total),
+		 "total": numTotal,
 		 "time": data.date
-	 };
+	 	};
 	 }
 
-	 session.setItem("OrderDetails", total + ";" + orderNum);
-
+	 session.setItem("OrderDetails", data.fName + "-" + orderNum + ";" + numTotal + "/" + data.shipAddress);
 	 
-	 await wixData.insert("TransactionLog", dataToInsert)
+	 wixData.insert("TransactionLog", dataToInsert)
 	 	.then((results) =>{
 			 //console.log("Transaction added")
 			 session.removeItem("cart");

@@ -1,6 +1,8 @@
 # C487WFinalPrototypeJS
 This repository contains all JS used to implement functionality on the EditorX website developed by group 6 for CMPSC 487W
 
+Website Application Link: https://rdw5286.editorx.io/prototype-3
+
 Customer Browsing:
 No login required
 

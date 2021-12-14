@@ -1,5 +1,5 @@
 // API Reference: https://www.wix.com/velo/reference/api-overview/introduction
-// “Hello, World!” Example: https://learn-code.wix.com/en/article/1-hello-world
+// “Hello, World!” Example: https://learn-code.wix.com/en/article/1-hello-worldF
 import wixData from 'wix-data';
 import {session} from 'wix-storage';
 import wixLocation from 'wix-location';
@@ -9,7 +9,7 @@ $w.onReady(function () {
 	removeEmpty();
 
 	// Load cart
-	loadCart();
+	loadCart().then(results => {$w("#repeater1").show()});
 });
 
 function removeEmpty() {
@@ -21,17 +21,20 @@ function removeEmpty() {
 			let semiPos = cart.indexOf(";", cursor);
 			let dashPos = cart.indexOf("-", cursor);
 			let quantity = parseInt(cart.substring(dashPos + 1, semiPos));
-
+			
 			if (quantity == 0) {
 				// Remove item from cart
-				let offset = cursor
-				if (offset == 0) offset = 1;
-				let newCart = cart.substring(0, offset) + cart.substring(semiPos+1);
+				let newCart = cart.substring(0, cursor) + cart.substring(semiPos+1);
 				session.setItem("cart", newCart);
+				if (newCart.localeCompare("") == 0) {
+					session.removeItem("cart");
+					return;
+				}
 			}
 			else {
 				cursor = semiPos + 1;
 			}
+			cart = session.getItem("cart")
 			if (cursor >= cart.length) {
 				moreItems = false;
 			}
@@ -93,9 +96,9 @@ async function loadCart() {
 			moreItems = false;
 		}
 	}
-	subTotal.toFixed(2);
-	$w("#html1").postMessage(subTotal);
-	$w("#html2").postMessage(subTotal);
+	let fixedSub = subTotal.toFixed(2);
+	$w("#html1").postMessage(fixedSub);
+	$w("#html2").postMessage(fixedSub);
 
 	// Set repeater data
 	$w("#repeater1").data = cartData;
@@ -116,10 +119,9 @@ async function loadCart() {
 			if (isNaN(newQuantity)) {
 				return;
 			}
-			if (newQuantity <= 0) {
-				let def = 1;
-				$item("#cartQuantity").value = def.toString();
-				return;
+			if (newQuantity < 0) {
+				newQuantity = 0
+				$item("#cartQuantity").value = newQuantity.toString();
 			}
 			let cart = session.getItem("cart")
 			let idPos = cart.indexOf(itemData._id + "-");
@@ -133,7 +135,6 @@ async function loadCart() {
 
 
 async function updateSubtotal() {
-
 	subTotal = 0;
 	let cart = session.getItem("cart");
 	if (cart == null || cart.localeCompare("") == 0) {
@@ -162,9 +163,9 @@ async function updateSubtotal() {
 			moreItems = false;
 		}
 	}
-	subTotal = parseFloat(subTotal.toFixed(2));
-	$w("#html1").postMessage(subTotal);
-	$w("#html2").postMessage(subTotal);
+	let fixedSub = subTotal.toFixed(2);
+	$w("#html1").postMessage(fixedSub);
+	$w("#html2").postMessage(fixedSub);
 	
 }
 

@@ -1,0 +1,397 @@
+﻿
+
+
+
+
+**Software Requirements Specifications for Watches89**
+
+Property of Watches88 & G6 Devs
+
+Authored by G6 Devs
+
+Last Edited: 09/22/2021
+
+In partial fulfillment of CMPSC 487W
+
+
+
+
+
+TABLE OF CONTENTS
+
+` `TOC \h \u \z [**Introduction](#_b06ravz8skem)**	 PAGEREF \_b06ravz8skem \h **2**
+
+[1.1 System Purpose](#_lp6ffd4v1cv4)	 PAGEREF \_lp6ffd4v1cv4 \h 2
+
+[1.2 System Audience](#_uu1a7lch7eu1)	 PAGEREF \_uu1a7lch7eu1 \h 2
+
+[1.3 Definitions, Acronyms, Abbreviations](#_rjxmbnds4k21)	 PAGEREF \_rjxmbnds4k21 \h 2
+
+[1.4 Respected Conventions](#_v4fw3r1sq7zf)	 PAGEREF \_v4fw3r1sq7zf \h 3
+
+[1.5 System Scope](#_knlxhlq9v0wg)	 PAGEREF \_knlxhlq9v0wg \h 3
+
+[1.6 References](#_z2ed5matr5o8)	 PAGEREF \_z2ed5matr5o8 \h 4
+
+[**System Description](#_bz2dtl5xwqwx)**	 PAGEREF \_bz2dtl5xwqwx \h **4**
+
+[2.1 Product Functionality & Applications](#_jqsj8pn7o3as)	 PAGEREF \_jqsj8pn7o3as \h 4
+
+[2.2 User Classes](#_3uhpo0hec70b)	 PAGEREF \_3uhpo0hec70b \h 5
+
+[2.3 Hardware Limitations](#_8m6rtmtsgr3j)	 PAGEREF \_8m6rtmtsgr3j \h 5
+
+[2.4 Software Limitations](#_4wdeq1i6grta)	 PAGEREF \_4wdeq1i6grta \h 5
+
+[2.5 Assumptions & Dependencies](#_iqjwv9eksse)	 PAGEREF \_iqjwv9eksse \h 6
+
+[**Application Interfacing](#_pcnixnyn9ve3)**	 PAGEREF \_pcnixnyn9ve3 \h **6**
+
+[3.1 Customer-Side Interface](#_l8u2ie10fd20)	 PAGEREF \_l8u2ie10fd20 \h 6
+
+[3.2 Staff-Side Interface](#_yo4679g2ls66)	 PAGEREF \_yo4679g2ls66 \h 7
+
+[3.3 Admin-Side Interface](#_2u41y7rnzv6r)	 PAGEREF \_2u41y7rnzv6r \h 7
+
+[3.4 Wholesaler-Side Interface](#_bak1z9q020ho)	 PAGEREF \_bak1z9q020ho \h 7
+
+[3.5 Database Interface](#_xgt5mfoztoki)	 PAGEREF \_xgt5mfoztoki \h 8
+
+[**System Features](#_p7wf1960sweg)**	 PAGEREF \_p7wf1960sweg \h **8**
+
+[4.1 Customer Functionalities](#_7j4raxvj0yrm)	 PAGEREF \_7j4raxvj0yrm \h 8
+
+[4.2 Staff Functionalities](#_w5xkxcod8ws)	 PAGEREF \_w5xkxcod8ws \h 10
+
+[4.3 Wholesaler Functionalities](#_nwrzgt1u826j)	 PAGEREF \_nwrzgt1u826j \h 11
+
+[4.4 Admin Functionalities](#_egz9icb5apbq)	 PAGEREF \_egz9icb5apbq \h 12
+
+[**Relative Documentation](#_f88nwmdtpi93)**	 PAGEREF \_f88nwmdtpi93 \h **14**
+
+[5.1 Nonfunctional Requirements](#_ik9gp1vg0nn2)	 PAGEREF \_ik9gp1vg0nn2 \h 14
+
+[5.2 Software Process Model](#_8blppaqgrz2h)	 PAGEREF \_8blppaqgrz2h \h 14
+
+[5.3 Organization’s Policies](#_88cqt8jhbdbb)	 PAGEREF \_88cqt8jhbdbb \h 15
+
+[5.4 Quality Assurance](#_cdcezwcy023s)	 PAGEREF \_cdcezwcy023s \h 15
+
+[**Appendixes](#_s96b8iy31584)**	 PAGEREF \_s96b8iy31584 \h **16**
+
+[**Index](#_h89uyaoxakyr)**	 PAGEREF \_h89uyaoxakyr \h **17**
+
+# **Introduction**
+######
+The introduction of the Software Requirements Specification provides an overview of the entire SRS. It will include subsections that cover SRS purpose, system audience, relevant definitions, acronyms, abbreviations, and references. This document will cover topics such as system description, application interfacing, system features, and relative documentation. These sections will contain in depth insight by being broken down further into subsections. The software system being covered in this document is an E-Commerce site for the company Watches88.
+
+## ***1.1 System Purpose***
+This document will contain a collection of all information gathered by the team pertaining to the requirements of a purpose built E-Commerce software system. This system is intended to provide a complete and comprehensive portal through which customers, staff, and administrators can interact with the business. The system will enable all types of customers to browse and purchase products online. 
+
+Staff and administrators will have access to additional functionalities when interacting with the system. This functionality will be designed to streamline the process of inventory management with a  focus on business optimization. The goal of the optimization will be to create faster, more efficient, and cost-effective interactions between the system's users and the subsystems required to run a successful online business. 
+
+## ***1.2 System Audience***
+- Customers
+- Staff
+- Wholesalers
+- Administrators
+
+## ***1.3 Definitions, Acronyms, Abbreviations***
+RWD -  Responsive Web Design is an approach to web design that makes web pages render well on a variety of devices and window or screen sizes from minimum to maximum display size.
+
+## ***1.4 Respected Conventions***
+- Entire document should be justified
+- Conventions for main title:
+  - Font Face: Arial
+  - Font Style: Bold
+  - Font Size: 20
+- Conventions for sub title:
+  - Font Face: Arial
+  - Font Style: Bold
+  - Font Size: 14
+- Conventions for body:
+  - Font Face: Georgia
+  - Font Style: Normal
+  - Font Size: 12
+
+## ***1.5 System Scope***
+The following is a high-level and non-comprehensive overview of the subsystems and their functionality. These include but are not limited to a website, user-dependent website views, sales funnels, payment gateways, databases, and user-dependent database interaction.
+
+1) The website builder EditorX will be used to design the main portal through which all users will interact with the system. Responsive web design (RWD) is the approach that will be used to ensure that all pages render well on a variety of devices and windows. Mobile users account for more than half of all internet traffic [1]. This design will ensure all users are accommodated and can shop without issue.
+1) Users will be able to browse and add/remove items to a shopping cart. An adequate payment mechanism and gateway will ensure all credit cards and relevant payment options are available for checkout.
+1) Users will be able to join email campaigns that will notify them of new products and sales. This voluntary subscription will give staff the option to create sales funnels targeted at particular customers based on order history or cart contents. Appropriate analytic tools will be provided to optimize the process.
+1) The system will include an authorization mechanism. Through this, users may access different interfaces. Customers will be able to create accounts to checkout faster. Staff and administrators with valid logins, passwords, and 2FA setup will have access to the advanced operations of the web application.
+1) Inventory management will be streamlined to allow non-technical staff to interact with the database. Staff and administrators will have access to strategic data gathering tools using the platform's features and custom queries for report generation. The ability to import/export reports or spreadsheets relating to new inventory, sales, or customer information will ensure non-technical staff do not have to interact with the databases directly.
+1) Wholesaler accounts can be provided to retailers interested in receiving recurring shipments of products at a discount. Minimum cart totals, pricing, and product availability can be adjusted on a case by case basis depending on the particular wholesaler account assigned to that user.
+
+## ***1.6 References***
+[1]https://www.cisco.com/c/en/us/solutions/collateral/executive-perspectives/annual-internet-report/white-paper-c11-741490.html
+
+
+# **System Description**
+######
+This section will detail the expectations of our website as well as the assumptions made when creating the website.
+
+## ***2.1 Product Functionality & Applications***
+The product will be equipped to handle multiple levels of users. Valid username, password, and 2FA will be required to access the different views and privileges assigned to particular users. (Detailed information about *User Classes* will be discussed in the *System Features* section.) The website will include all current product listings from Watches88 that users can view and interact with. Interactions listed below:
+
+- Manipulate products in shopping cart,
+  - ` `Add and remove products.
+- Create a wishlist 
+  - ` `Add/remove products to and from the wishlist.
+- Create an account
+  - Username (unique for all users), password, email address, and postal address
+- Access to order history
+- Users can view the listings of products through different categories. Categories include:
+  - Brand
+  - Types of Movements 
+  - Dial Color
+- View more details about the product 
+  - Name, strap material, weight, movement, water resistance, and crystal.
+- Notify admins and staff when product stock is low.
+- Checkout 
+
+## ***2.2 User Classes***
+- Admins: System administrators that have the highest level permissions grantable on the site. These users are capable of making nearly any modification to inventory that would be necessary.
+- Staff: Low level administrators capable of updating inventory descriptions and quantity in a logged manner.
+- Wholesalers: Privileged users given unique gui for wholesale deals.
+- Customers: A standard user account with capabilities to search, sort, and purchase products.
+
+## ***2.3 Hardware Limitations***
+Squarespace has multiple hardware limitations on our system. Which include:
+
+- Lack of internet access will affect the operation of our website since a vast majority of our systems rely on this basic necessity. 
+- The amount of data stored is kept to a minimum due to unknown storage availability on the hosting server.
+
+## ***2.4 Software Limitations***
+Squarespace has multiple software limitations on our system. Which include:
+
+- Squarespace uses a JSON data dictionary to store their data. No other databases are supported
+- For development a template language called JSON-T is used to manipulate the contents of web pages and file structures.
+
+## ***2.5 Assumptions & Dependencies***
+Client: 
+
+We are assuming that the user is able to navigate to our website and be able to properly create an account with a unique username and password (doesn't have to be unique). 
+
+Provider: 
+
+We are assuming that Squarespace will host our website correctly on a web server with the ability to successfully perform queries. Also we are assuming that Squarespace’s security is up to date. 
+
+Dependencies: 
+
+Creating any new category of item will require a new relationship between the new fields and data that our system will have to handle. Whenever we create a new page it must have previous data fields collected. 
+
+Assumptions: 
+
+All data types are consistent with pre existing tables. 
+
+
+# **Application Interfacing**
+######
+###### This section will mention the five interfaces of the system and detail several GUI elements specific to each one.
+
+## ***3.1 Customer-Side Interface***
+- Customers will receive order confirmation and details via email (Gmail, Outlook, etc.)
+- Customers can find specific products using the search field 
+- Customers can access different sections of the system through the navigation bar 
+- The navigation bar will provide categorized products using drop down buttons
+- Customers can return to the home page using the button containing an image of the company’s logo
+- Customers must be notified of ongoing sales using message boxes or modal windows that will show up on the home-page 
+- Customers can filter out product features via checkbox
+- Customers can sort products using drop down buttons
+- The system will provide the customer with a digital image for each product in the catalog
+- The system will have a description for each product using text labels
+
+## ***3.2 Staff-Side Interface***
+- Staff can update inventory descriptions and quantity using the “update” button
+- Staff member can request changes to an item using a form
+- Staff changes will be shown in a log that keeps track of product updates
+
+## ***3.3 Admin-Side Interface***
+- The system allows importing and exporting of inventory via MS excel sheet in CSV data format
+- Admin can adjust product pricing and minimum cart total for wholesalers using text fields
+- Admin can access a log of changes and updates that staff have made
+- Admin can add and remove products using buttons
+
+## ***3.4 Wholesaler-Side Interface***
+- Wholesalers will be provided with additional buttons on the product page to purchase eligible items
+- The wholesaler interface will also include buttons to subscribe and receive recurring orders on eligible items
+- Wholesalers can view whether they have reached the minimum price via the text area located at cart checkout
+
+## ***3.5 Database Interface***
+- The system will use a JSON data dictionary to store data in databases
+- The template language JSON-T is used by the system to interact with stored data
+- HTML elements are dynamically generated based on data retrieved from databases
+
+
+# **System Features**
+######
+System functionality is defined by the requirements discussed in its description. For each user class, the functionality provided to them is as described in the proceeding sections. 
+
+It is critical to note that functionality is provided to each user class to satisfy audience intentions. Each class is privileged to allow only for their required applications. Functionality is limited to Customers, Staff, and Wholesalers for security. Further discussion of such privilege handling is elaborated in “Relative Documentation.”
+
+Requirements requested by the Requirements Engineering team are denoted with IR, meaning “Implementation Requirement.” These requirements are directly correlated to the necessary functions requested by the organization, Watches88. Followed by each requirement, in brackets, is the significance of implementing the requirement.
+
+## ***4.1 Customer Functionalities***
+Functionality for the customer class is as follows:
+
+1) Customers must have access to the e-commerce web application and all products publicly listed. [High]
+1) Customers must be able to review their order information before purchase. [High]
+1) Customers must be able to add and remove items from their cart. [Medium]
+1) Customers must receive a confirmation message after finalizing their transaction. [Low]
+1) Customers must be able to sort products by price, title, category, etc. These listings must be publicly available to improve the search functionality of the web application. [Medium]
+1) When items are purchased by the customer, the inventory system must be updated to accurately represent the amount of stock left. [High]
+
+In detail, each requirement is elaborated upon below for ease of implementation.
+
+\1) The web application is provided free of charge to all visiting users. Customers are not required by any means to sign in to access products. Items which are marked as “public” are open to being purchased by any customer that engages with the web application. The web application is presented in <web format>.
+
+\2) The customer may purchase items of any quantity they desire as allowed by inventory quantity. As such, their final transaction must be reviewable by the customer. This review is allowed by the “cart” functionality. In this cart, customers may look at the item name, pricing, and quantity they wish to purchase. The cart interface must contain these fields present when visiting the cart for every item in the transaction.
+
+\3) The cart must also be manipulable. Items selected by the customer must not only be viewable in their cart but mutable through its quantity fields. The purchase quantity is changed for every item in the cart through their respective quantity field. Furthermore, each item may be fully removed from the cart using a “remove” button provided for each item. If removed, the item cannot be obtained again unless the customer visits the item’s proper page.
+
+[IR] 4) When customers are certain of their purchase, confirmation of said transaction must be sent to the customer. This confirmation is sent by an automated system to an email address provided to the customer at the payment screen. As the payments are handled by external sources, the customer needs only provide their email and approval for transaction completion. The email will contain a message as follows once the system has detected a finalized transaction:
+
+<Message greeting>, <Item list>, <Subtotal & Total>, <User information>, <Support info>
+
+\5) Items are organized by the web application in several ways. Immediately upon visiting the website, the top recommended items for the day are displayed to the user. As the access to the website proceeds, the user may view items in the following categories:
+
+The website will be organized by the categories Brand, Color, and Types of Movements on the main website. These categories would then expand into each value in the category. Respectively by the order of categories listed above, these values are as follows:
+
+`	`Brand = Producer of watch
+
+`	`Color = Color of the watch dial
+
+`	`Types of Movements = Automatic, manual, or quartz
+
+Furthermore, the item list must be accessible in its entirety from the lowest price to the highest. Database queries are easily capable of performing this task, along with a reliable sorting algorithm. Additionally, these items may also be organized alphabetically by name. If all else is unsatisfactory, the customer must always have the option to search for their product. Items that are close in naming must then be provided to the user to select from. Once the item is selected from these various searching methods, the user is directed to the item’s specialized page. The direct search for items is handled by the searching functionality given by Squarespace.
+
+[IR] 6) For every transaction, the inventory database must be updated to accurately represent the stock available for the items purchased. Using queries, the system may easily update each respective item purchased by the customer. If the item purchased reaches a quantity of 0 after the transaction is finalized, the item must immediately have its viewing status “hidden.” A separate log must also exist to notify the admin class of all items which have been sold out.
+
+## ***4.2 Staff Functionalities***
+Functionality for the staff class is as follows:
+
+1) Staff must be able to view the inventory database and transaction log. [Medium]
+1) Staff must be able to change individual item quantity (limited items) and description & brand (all items). [Low]
+1) Staff must authorize their identity through an identification system. This system will be structured such that a provided username and password must be entered to access the restricted information discussed in these requirements. [High]
+
+In detail, each requirement is elaborated upon below for ease of implementation.
+
+\1) After successful authentication, the staff member may access all publicly listed items in the inventory database. Each item in the database holds key information which is publicly displayed on their respective item’s page. The transaction log contains every purchase by customers who use the web application. Each transaction contains purchased items, total cost, customer email, and time of purchase. The user’s physical address and payment information are handled by the external payment system, and thus not necessary for the log.
+
+\2) For every item, the staff user must be able to directly manipulate the item quantity, description, and brand of any item. Available quantity for items is only mutable by staff for limited items. The item description and brand of every product is mutable for all items in inventory. Through digital implementation of item change, the following must take place for the item field info to be updated:
+
+When viewing the inventory table, the staff user may select an item in the inventory database to update. To make changes, the user must interact with the “Update” button to change the item field values. This will send the staff user to a form, which allows them to enter in the requested changes for the item. Once the form is submitted, the changes will be made for the item and the update will be sent to a log that keeps track of item information updates.
+
+[IR] 3) Access to staff-level privileges is allowed only if the user enters with a valid staff account. Staff accounts contain a username and password, provided by admin users to any staff member that requires access to the web application. Authentication is located at the profile authorization provided by Squarespace. A 2-Factor authentication system will be used for staff-level and admin-level users for security.
+
+## ***4.3 Wholesaler Functionalities***
+Functionality for the wholesaler class is as follows:
+
+1) Wholesalers must have access to items of adjusted pricing. These items are marked by the staff and admin users, available only to those who have been granted a wholesaler account. [High]
+1) The wholesaler user must authorize their identity through the authentication system provided for staff and managers. Privileged access includes limited items and discounted prices.  [Medium]
+1) Wholesalers must have a minimum total cost for purchases. Otherwise, they must be unable to finalize the invalid transaction. [Medium]
+
+In detail, each requirement is elaborated upon below for ease of implementation.
+
+\1) Once properly authorized, the wholesaler user will have a preview of discounted items. The wholesaler must see all products available not only to regular customers but limited-time items as well. The account is provided manually by the admin class users when needed. 
+
+[IR] 2) The authentication of a wholesaler user is done directly on the web application. On the homepage of the website, the wholesaler may choose to authenticate themselves with their valid username and password. Once logged in, their interface will change from the typical customer to a wholesaler.
+
+\3) Unlike customers, wholesalers cannot finalize their transactions unless the total cost of the items purchased is above a minimum amount. This value is purposely unique for all wholesaler accounts and is stored in their respective account information. This may be changed at any time, but will always be made aware to the wholesale user when doing so.
+
+## ***4.4 Admin Functionalities***
+Functionality for the admin class is as follows:
+
+1) Admin must be able to change individual item prices. [Medium]
+1) Admins must be able to add, hide, and/or remove items. [High]
+1) Admins must have access to the list of staff and log of updates performed by staff. [Medium]
+1) Admins must be able to add, edit, and/or remove staff members. [Medium]
+1) Admins can create sales and inventory reports. These reports can be generated for the past day, week, month, and year. [Medium]
+1) Admins must be able to edit the inventory database directly in bulk for product availability. Admins must also be able to individually change item pricing, visibility, status, and all item details not available to staff users. [Medium]
+1) Admins must have access to the list of wholesaler accounts. This user must also be able to add, edit, or remove these accounts as desired. [Medium]
+
+In detail, each requirement is elaborated upon below for ease of implementation.
+
+\1) Similar to that of the item description and quantity manipulation by staff-level members, admin users must be able to directly change the price of any items listed in the inventory database. When such action is taken, the admin user must confirm the changes being made to the item.
+
+[IR] 2) Items listed in the inventory must contain a field that determines the visibility of the item on the website. If the item is “Public”, any user may view the item. If the item is “Discounted”, then it is only viewable by Wholesalers and all staff users, including admins. Items that are “hidden” may only be viewed by staff and admin users. This field may only be changed by admin users and requires confirmation after doing so. To add items, the admin must do the following once they have selected the “Add” button:
+
+The user must provide all required information by the item to be saved in the inventory database. Once all information has been entered, the admin must then review the page which is displayed to customers when accessed. Once approved, the item is added to the database and immediately made available to any browsing customers who have access to the item. If the item is initially defined as hidden or discounted, only the authorized individuals may see the item page.
+
+To remove an item from the inventory, the admin user must select the item they wish to remove, select the “Delete” button, and confirm their decision.
+
+\3) The list of staff members must be maintained by the admin users. Furthermore, each staff member must have listed their name, time of most recent system login, and other significant information which may include the following on their account:
+
+`	`Staff name and login credentials
+
+Additionally, the log of updates performed by staff must be visible to admin users to accurately track manual changes made to the inventory.
+
+[IR] 4) In the view of staff members, the admin user must be able to add, edit, and remove any staff member they please. Note that, to provide these behaviors, the staff list must be contained within a database or system which allows such action. The list of staff, as such, will be provided in the database system and only be viewable by admin users. These actions may then be performed using queries.
+
+\5) The admin must be able to generate reports of sales and inventory. The reports generated for inventory must contain all information provided in the database. This information must be formatted in such a way that any analyst or individual unfamiliar with the system could identify each and every item’s field data. Transaction reports may be generated for the past day, week, month, or year. Respectively, each report must contain the appropriate logs of all transactions which occurred during this time. Similar to the inventory report, each transaction report must be formatted for ease of readability.
+
+\6) Admin users must be able to import and export the inventory data as a spreadsheet. For standardization, the formatting used will be .CSV. When importing a valid spreadsheet file to overwrite the inventory data, any and all changes must be reviewed by the admin user. Furthermore, the addition of several new items must each individually be reviewed by the admin user for approval. This approval will follow similar to that of adding individual items but occur one after another. Additionally, all changes allowed by admins to items individually but not to staff are as follows:
+
+`	`Price, visibility status, and item specifics
+
+[IR] 7) A list of wholesaler accounts must be available to the admin user. This list must contain the wholesaler transaction minimum, time of last purchase, and description of the wholesaler. The description of the wholesaler, as well as any additional fields for each wholesaler, may contain the following on their account:
+
+The company name representing the wholesaler, login credentials, their minimum purchase amount, their contact information, their discount factor.
+
+Additionally, the admin user must be able to add new wholesaler’s accounts, edit existing ones, and remove any which are no longer needed. The use of queries will be sufficient for this task. 
+
+
+# **Relative Documentation**
+######
+This section will detail many of the aspects of the project which are not direct features to be implemented, but rather, the quality of code put behind the functional requirements previously listed. It will also detail the workflow of the team during and after production.
+
+## ***5.1 Nonfunctional Requirements***
+1) Only the system administrators can assign roles.
+1) Transactions must be secured through AES standards.
+1) Customers must have ease of checkout without unnecessary steps.
+1) The website should be responsive, loading pages in less than 4 seconds.
+1) The website should operate off a database which allows for easy use and modification by admins.
+1) Ensure recorded card numbers are stored in a location inaccessible by users.
+   1) Ensure the card numbers are safe if a user manages to gain access to this location.
+
+## ***5.2 Software Process Model***
+The process which our team will use to create this project most closely mirrors the waterfall model visualized below.
+
+
+## ***5.3 Organization’s Policies***
+The policies of Watches88 will be a large factor in how this website is designed. The policies that we will be implementing as features on the website include:
+
+1) The website will not collect demographic information.
+1) The website will never store any of your personal information through cookies.
+1) The website will never send you unsolicited emails if you sign up as a user.
+   1) The only emails you should receive are order confirmation emails.
+
+## ***5.4 Quality Assurance***
+To assure a quality product is delivered to our client, our team will undergo an extensive testing phase. This includes testing all functionalities listed above both as functional, and nonfunctional requirements. These features are to be ensured as working and bug free through the extent of our testing before delivery to the client.
+# **Appendixes**
+######
+As this is the first version of the SRS, no relevant information can be provided here.
+
+
+# **Index**
+######
+**A**
+
+- AES is a specification for the encryption of electronic data. p.14
+
+**C**
+
+- CSV is an acronym for comma-separated values which is a file format typically used for inventory logging. p.7
+
+**H**
+
+- HTML is the HyperText Markup Language, or HTML is the standard markup language for documents designed to be displayed in a web browser. p.9
+
+**J**
+
+- JSON is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays. p.5, p.8
+- JSON-T is a template language for storing JSON data. p.5
+
+PAGE17
